@@ -13,3 +13,7 @@
  *= require_tree .
  *= require_self
  */
+
+.article span:not(.likes){
+  font-weight: bold;
+}
