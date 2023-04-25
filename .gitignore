@@ -35,4 +35,5 @@
 
 notes/
 
-.env*
+.env.development
+.env.test

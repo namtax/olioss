@@ -1,23 +1,36 @@
 # README
 
-Ruby-On-Rails Coding Task
+## Local setup
 
-Hello,
+1. Install postgres
+2. Install/make local ruby version specified in Gemfile
+3. Install `bundler` then run
 
-Welcome to OLIO's technical task. For this we'd like you to create a basic rails app (that we could run and try). This isn't designed to take a huge amount of your time and we're more interested to see what your areas of focus are and what you consider to be good engineering practices rather than the final result.
+```
+bundle install
+```
 
-As a guide we believe that good engineering practices include:
+4. Copy config files:
 
-Well named variables/methods/functions
-Consistent syntax
-Well thought out code
-(At least) basic documentation
-Tests
-Thoughtful commits
-Your audience is someone who has never run/used rails previously, but would like to get the app server running and experiment on the local environment.
+```
+cp .env.development.example.yml .env.development
+```
 
-Firstly, the list of articles is stored here, https://s3-eu-west-1.amazonaws.com/olio-staging-images/developer/test-articles-v4.json, and you'll need to pull this from the server on page load (as it may change).
+5. Update ARTICLES_URL in .env.development to s3 articles json endpoint
 
-It would be great if you could display the list of articles on the page. Lastly, we'd like to be able to 'like' an article, with the data persisted and updated with each new page load. The likes are global and not per user.
+```
+  ARTICLES_URL=https://s3-eu-west-1.amazonaws.com/CUSTOM_PATH.json
+```
 
-Cheers, OLIO Tech Team
+6. Create databases 
+
+```
+bundle exec rake db:create
+bundle exec rake db:migrate
+```
+
+7. Run application 
+
+```
+./bin/dev
+```
