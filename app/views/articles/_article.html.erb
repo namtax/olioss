@@ -1,4 +1,4 @@
-<div class="my-12 border-b-2 border-sky-500 pb-6">
+<div class="my-12 border-b-2 border-sky-500 pb-6" data-controller="articles" data-articles-update-url="<%= article_path(article) %>">
   <h2 class="font-bold text-3xl"><%= article.title %></h2>
   <p class="my-6"><%= image_tag article.photos[0]['files']['small'] %> </p>
   <p>description: <%= article.description %></p>
@@ -6,10 +6,11 @@
   <p>collection_notes: <%= article.collection_notes %></p>
   <p>status: <%= article.status %></p>
   <p>expiry date: <%= article.expiry %></p>
-  <p>likes: <%= article.reactions['likes'] %></p>
+  <p>likes: <span class="likes"><%= article.reactions['likes'] %></span></p>
   <p class="mt-4">Uploaded by <%= article.user.first_name %></p>
   <% if article.user.current_avatar['small'] %> 
     <p class="my-4"><%= image_tag article.user.current_avatar['small'] %></p>
   <% end %>
+  <a href="#" data-action="click->articles#like">&hearts; Like This!</a>
 </div>
 
