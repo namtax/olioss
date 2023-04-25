@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 class ArticlesController < ApplicationController
   before_action :store_articles, only: [:index]
 
   def index
-    @articles = Article.all
+    @articles = Article.all.order(:updated_at).page params[:page]
   end
 
   def update 

@@ -3,4 +3,6 @@
   <% @articles.each do |article| %>
     <%= render article %>
   <% end %>
+
+  <%= paginate @articles %>
 </div>

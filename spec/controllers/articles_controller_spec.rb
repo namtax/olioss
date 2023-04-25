@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe ArticlesController do 
@@ -10,8 +12,8 @@ RSpec.describe ArticlesController do
 
   describe '#POST articles#update' do 
     let(:params)  { { id: article.id } }
-    let(:article) { Article.create(user: user) }
-    let(:user)    { User.create }
+    let(:article) { Article.create(title: "new article", description: "new item", value: {price: 99}, expiry: Time.now, user: user) }
+    let(:user)    { User.create(first_name: 'john') }
 
     it 'returns 200' do
       post :update, params: params, format: :js
