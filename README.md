@@ -3,33 +3,44 @@
 ## Local setup
 
 1. Install postgres
-2. Install/make local ruby version specified in Gemfile
-3. Install `bundler` then run
+2. Ensure postgres is running 
+
+```
+eg  brew services restart postgresql@15 if you install via homebrew
+```
+
+3. Install/make local ruby version specified in Gemfile
+
+```
+eg  rbenv install $(cat .ruby-version)
+```
+
+4. Install `bundler` then run
 
 ```
 bundle install
 ```
 
-4. Copy config files:
+5. Copy config files:
 
 ```
-cp .env.development.example.yml .env.development
+cp .env.development.example .env.development
 ```
 
-5. Update ARTICLES_URL in .env.development to s3 articles json endpoint
+6. Update ARTICLES_URL in .env.development to s3 articles json endpoint
 
 ```
   ARTICLES_URL=https://s3-eu-west-1.amazonaws.com/CUSTOM_PATH.json
 ```
 
-6. Create databases 
+7. Create databases 
 
 ```
 bundle exec rake db:create
 bundle exec rake db:migrate
 ```
 
-7. Run application 
+8. Run application 
 
 ```
 ./bin/dev
