@@ -43,4 +43,30 @@ RSpec.describe Article do
       end
     end
   end
+
+  describe '#price' do 
+    context 'value empty' do
+      it 'returns zero' do 
+        expect(subject.price).to eq(0)
+      end
+    end
+
+    context 'value present' do
+      let(:value) do 
+        {
+          price: 20,
+          currency: "USD",
+          payment_type: "no_payment_type"
+        }
+      end
+
+      before do 
+        subject.value = value
+      end
+
+      it 'returns likes' do 
+        expect(subject.price).to eq("20 USD")
+      end
+    end
+  end
 end

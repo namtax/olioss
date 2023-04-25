@@ -10,4 +10,8 @@ class Article < ApplicationRecord
   def likes 
     reactions.nil? ? 0 : reactions['likes']
   end
+
+  def price
+    value.nil? ? 0 : "%s %s" % value.values_at("price", "currency")
+  end
 end
