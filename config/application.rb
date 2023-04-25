@@ -17,6 +17,12 @@ module Olioss
     # in config/environments, which are processed later.
     #
     # config.time_zone = "Central Time (US & Canada)"
-    config.eager_load_paths << Rails.root.join("lib")
+
+    config.eager_load_paths += %W(
+      #{config.root}/lib
+      #{config.root}/app/normalizers
+      #{config.root}/app/services
+    )
+
   end
 end
